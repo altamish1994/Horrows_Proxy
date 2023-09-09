@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Horrow's Proxy</title>
+  <style>
+    body {
+      width: 200px;
+      padding: 10px;
+    }
+    h2 {
+      font-size: 16px;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+    input {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+    button {
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <h2>Horrow's Proxy</h2>
+  <label for="proxyAddress">Proxy Address:</label>
+  <input type="text" id="proxyAddress" placeholder="Proxy Address" />
+  <label for="proxyPort">Proxy Port:</label>
+  <input type="text" id="proxyPort" placeholder="Proxy Port" />
+  <button id="applyProxyButton">Apply Proxy Settings</button>
+  
+    <!-- New button to toggle proxy -->
+  <button id="toggleProxyButton">Toggle Proxy</button>
+  
+  
+  <div id="status"></div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

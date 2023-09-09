@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Proxy Extension Options</title>
+  <style>
+    body {
+      width: 300px;
+      padding: 10px;
+    }
+    h2 {
+      font-size: 16px;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+    input {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+    button {
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <h2>Proxy Settings</h2>
+  <!-- New button to toggle proxy -->
+  <button id="toggleProxyButton">Toggle Proxy</button>
+  <label for="proxyAddress">Proxy Address BLAH:</label>
+  <input type="text" id="proxyAddress" placeholder="Proxy Address" />
+  <label for="proxyPort">Proxy Port:</label>
+  <input type="text" id="proxyPort" placeholder="Proxy Port" />
+  <button id="applyProxyButton">Apply Proxy Settings</button>
+
+  
+
+  <div id="status"></div>
+
+  <script src="options.js"></script>
+</body>
+</html>
