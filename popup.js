@@ -20,7 +20,15 @@ chrome.storage.local.get(['proxyAddress', 'proxyPort'], (result) => {
 applyProxyButton.addEventListener('click', () => {
 
 	if(proxyEnabled){
-	  enableProxy();
+	  // Sending a message to the background script
+		chrome.runtime.sendMessage({ type: 'applyProxySettings', data: dataToSend }, (response) => {
+		  if (chrome.runtime.lastError) {
+		    console.error(chrome.runtime.lastError);
+		  } else {
+		    // Handle the response from the background script (if any)
+		    console.log('Message sent to background script.');
+		  }
+		});
   	}
   	else{
   		setStatusMessage('Proxy Not enabled','error');

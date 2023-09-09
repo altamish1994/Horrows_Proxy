@@ -10,26 +10,29 @@ browser.runtime.onMessage.addListener((message, sender, sendResponse) => {
       return;
     }
 
-    // Configure the proxy settings
-    const proxyConfig = {
-      mode: 'fixed_servers',
-      rules: {
-        singleProxy: {
-          scheme: 'http',  // Change to 'https' if needed
-          host: proxyAddress,
-          port: parseInt(proxyPort),
-        },
-      },
-    };
+    chrome.storage.local.set({ proxyAddress, proxyPort }, () => {
+    
+	    // Configure the proxy settings
+	    const proxyConfig = {
+	      mode: 'fixed_servers',
+	      rules: {
+		singleProxy: {
+		  scheme: 'http',  // Change to 'https' if needed
+		  host: proxyAddress,
+		  port: parseInt(proxyPort),
+		},
+	      },
+	    };
 
-    // Apply the proxy settings
-    chrome.proxy.settings.set({ value: proxyConfig, scope: 'regular' }, () => {
-      if (chrome.runtime.lastError) {
-        sendResponse({ success: false, message: 'Failed to apply proxy settings.' });
-      } else {
-        sendResponse({ success: true, message: 'Proxy settings applied successfully.' });
-      }
-    });
+	    // Apply the proxy settings
+	    chrome.proxy.settings.set({ value: proxyConfig, scope: 'regular' }, () => {
+	      if (chrome.runtime.lastError) {
+		sendResponse({ success: false, message: 'Failed to apply proxy settings.' });
+	      } else {
+		sendResponse({ success: true, message: 'Proxy settings applied successfully.' });
+	      }
+	    });
+	});
   }
   
   if (message.action === 'clearProxySettings') {
